@@ -1,6 +1,6 @@
 package ed.exampleConsumer.consumer.controller;
 
-import ed.exampleConsumer.consumer.model.dto.ActivityRequest;
+import ed.exampleConsumer.consumer.model.dto.ActivityResponse;
 import ed.exampleConsumer.consumer.model.entity.Activity;
 import ed.exampleConsumer.consumer.repository.ActivityRepository;
 import lombok.AllArgsConstructor;
@@ -21,12 +21,12 @@ public class ActivityController {
     private final ActivityRepository activityRepository;
 
     @GetMapping("/{idActivity}")
-    public ResponseEntity<ActivityRequest> findById(@PathVariable Long id) {
-        Optional<Activity> optional = activityRepository.findById(id);
+    public ResponseEntity<ActivityResponse> findById(@PathVariable Long idActivity) {
+        Optional<Activity> optional = activityRepository.findById(idActivity);
 
         return (optional.isEmpty()) ?
                 new ResponseEntity<>(HttpStatus.NOT_FOUND) :
-                ResponseEntity.ok(ActivityRequest.create(optional.get()));
+                new ResponseEntity<>(ActivityResponse.create(optional.get()), HttpStatus.OK);
     }
 
 }
