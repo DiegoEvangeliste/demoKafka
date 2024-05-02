@@ -18,11 +18,11 @@ public class KafkaTopicConfig {
         configurations.put(TopicConfig.CLEANUP_POLICY_CONFIG, TopicConfig.CLEANUP_POLICY_DELETE); //Tratamiento de borrado de mensajes: "delete"(Borra el mensaje), "compact"(mantiene el mas actual).
         configurations.put(TopicConfig.RETENTION_MS_CONFIG, "86400000"); //tiempo de retencion de mensaje (por defecto -1).
         configurations.put(TopicConfig.SEGMENT_BYTES_CONFIG, "1073741824"); //Tamanio maximo que puede contener cada segmento dentro un topic.
-        configurations.put(TopicConfig.MAX_MESSAGE_BYTES_CONFIG, "SEGUN_CORRESPONDA"); //Tamanio maximo de cada mensaje.
 
         return TopicBuilder
                 .name("exampleTopic1")
                 .configs(configurations)
                 .build();
     }
+
 }
